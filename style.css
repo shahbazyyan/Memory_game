@@ -1,0 +1,169 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: orange;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.title h1{
+    margin: auto;
+    margin-top: 20px;
+	letter-spacing: 0.0015em;
+	font-size: 5em;
+	text-shadow: 0 1px #8da1ff, -1px 0 #c0cbff, -1px 2px #8da1ff, -2px 1px #c0cbff,
+		-2px 3px #8da1ff, -3px 2px #c0cbff, -3px 4px #8da1ff, -4px 3px #c0cbff,
+		-4px 5px #8da1ff, -5px 4px #c0cbff, -5px 6px #8da1ff, -6px 5px #c0cbff,
+		-6px 7px #8da1ff, -7px 6px #c0cbff, -7px 8px #8da1ff, -8px 7px #c0cbff;
+	text-align: center;
+}
+
+.wrapper {
+    text-align: center;
+    margin-top: 30px;
+    color: ghostwhite;
+}
+
+.wrapper i:hover {
+    cursor: pointer;
+    transition: .6s;
+    transform: scale(1.5);
+}
+
+
+.levels {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.levels a {
+    text-decoration: none;
+    margin: 20px;
+    font-size: 2.2rem;
+    padding: 10px;
+    cursor: pointer;
+    transition: .7s ease-in-out;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.levels a:hover {
+    transform: scale(1.1);
+    color: cornsilk;
+}
+
+.footer {
+    text-align: center;
+    padding: 110px;
+}
+
+p {
+    font-size: 8vw;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+  }
+  
+  .fancy {
+    @supports (background-clip: text) or (-webkit-background-clip: text) {
+      background-image: 
+        url("data:image/svg+xml,%3Csvg width='2250' height='900' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='%2300A080' d='M0 0h2255v899H0z'/%3E%3Ccircle cx='366' cy='207' r='366' fill='%2300FDCF'/%3E%3Ccircle cx='1777.5' cy='318.5' r='477.5' fill='%2300FDCF'/%3E%3Ccircle cx='1215' cy='737' r='366' fill='%23008060'/%3E%3C/g%3E%3C/svg%3E%0A");
+      background-size: 110% auto;
+      background-position: center;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+
+  /* easy */
+
+ .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: #fff;
+    padding: 40px 60px;
+ }
+
+ .container h1 {
+    font-size: 2rem;
+    color: grey;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+ }
+
+ .reset {
+    padding: 15px 20px;
+    color: rgb(0, 0, 0);
+    background: rgb(255, 197, 89);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-weight: 500;
+ }
+
+ .reset:focus {
+    color: #fff;
+    background: orange;
+ }
+
+ .game {
+    width: 440px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+ }
+
+ .item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: orange;
+    transition: .3s;
+    transform: rotateY(180deg);
+ }
+
+ .item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgb(251, 214, 3);
+    transition: .5s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+ }
+
+ .item.openBox {
+    transform: rotateY(0deg);
+ }
+
+ .openBox::after {
+    transform: rotateY(180deg);
+ }
+
+ .openBox::after, .matchBox:after {
+    transform: rotateY(180deg);
+ }
