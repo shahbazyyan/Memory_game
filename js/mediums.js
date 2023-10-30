@@ -1,37 +1,32 @@
 
-const emojisHard = ["❌", "❌", "✅", "✅", "⭕", "⭕", "🛑", "🛑", "🍭", "🍭", "🍗", "🍗", "🎂", "🎂", "🍟", "🍟", "🎱", "🎱", "⏰", "⏰", "🥇", "🥇", "🥑", "🥑", "🐤", "🐤", "🏀", "🏀", "🔔", "🔔", "🗑️", "🗑️", "🎮", "🎮", "🇦🇲", "🇦🇲", "🇦🇷", "🇦🇷", "🇫🇷", "🇫🇷"];
-let shuffleArray = emojisHard.sort(() => (Math.random() > 0.5 ? 2 : -1));
-const openBox = document.querySelectorAll(".openBox");
+const emojisMedium = ["❌", "❌", "✅", "✅", "⭕", "⭕", "🛑", "🛑", "🍭", "🍭", "🍗", "🍗", "🎂", "🎂", "🍟", "🍟", "🎱", "🎱", "⏰", "⏰", "🥇", "🥇", "🥑", "🥑", "🐤", "🐤", "🏀", "🏀", "🔔", "🔔"];
+let shuffleArray = emojisMedium.sort(() => (Math.random() > 0.5 ? 2 : -1));
 const timerElement = document.querySelector(".timer");
-
+const popup = document.querySelector(".popup");
+const ok_btn = document.querySelector(".ok_btn");
+const popup_over = document.querySelector(".popup_over");
 
 function openCloseBox(box) {
+  startTimer();
   if (box.classList.contains("openBox")) return; 
   const openBoxes = document.querySelectorAll(".openBox");
-  const matchBox = document.querySelectorAll(".matchBox");
   if (openBoxes.length < 2) {
     box.classList.add("openBox");
-    
     updateClickCounter();
     const openBoxes = document.querySelectorAll(".openBox");
     if (openBoxes.length === 2) {
       if (openBoxes[0].innerHTML === openBoxes[1].innerHTML) {
-        
         openBoxes.forEach((openBox) => {
           openBox.classList.add("matchBox");
           openBox.classList.remove("openBox");
           openBox.classList.add("hide");
-          
-        //   matchBox.forEach((match) => {
-        //       match.classList.add(".hide")
-        //   });
+          openBox.style.pointerEvents = "none";
         });
-
-
         const matchBoxes = document.querySelectorAll(".matchBox");
-        if (matchBoxes.length === emojisHard.length) {
-          openPopup();
-          stopTimer();
+        if (matchBoxes.length === emojisMedium.length) {
+          openPopup(popup);
+          minutes = 0;
+          seconds = 0;
         }
       } else {
         setTimeout(() => {
@@ -44,7 +39,8 @@ function openCloseBox(box) {
   }
 }
 
-for (let i = 0; i < emojisHard.length; i++) {
+
+for (let i = 0; i < emojisMedium.length; i++) {
   let box = document.createElement("div");
   box.classList.add("item");
   box.innerHTML = shuffleArray[i];
@@ -59,32 +55,27 @@ function restartGame(btn) {
     window.location.reload();
   });
 };
-
 restartGame(restartBtn);
 
 // controls
-
+//clicker
 const click = document.querySelector(".click");
 
-let clickCounter = 220;
+let clickCounter = 120;
 
 function updateClickCounter() {
     clickCounter--;
     click.textContent = clickCounter;
     if(clickCounter === 0) {
-        click.textContent = 0;
+        openPopup(popup_over);
         stopTimer();
-        setTimeout(() => {
-            alert("Game over")
-          }, 1000);
+         };
         };
-     }; 
 
   //timer
-        
   let timerInterval;
   let timerRunning = false;
-  let minutes = 7;
+  let minutes = 4;
   let seconds = 0;
 
 
@@ -95,16 +86,25 @@ function updateClickCounter() {
     }
   }
 
-  function stopTimer () {
-    timerRunning === false;
+  function stopTimer() {
+    timerRunning = false; 
     minutes = 0;
     seconds = 0;
+    if (clickCounter === 0) {
+      openPopup(popup_over);
+    }
   }
+  
+  
+  
 
   function updateTimer() {
     if (minutes === 0 && seconds === 0) {
       clearInterval(timerInterval);
-      timerRunning = false;
+      
+      // setTimeout(() => {
+      //   openPopup(popup_over);
+      // }, 500);
     } else {
       if (seconds === 0) {
         minutes--;
@@ -122,23 +122,17 @@ function updateClickCounter() {
     timerElement.innerText = `${displayMinutes}:${displaySeconds}`;
   }
 
-  window.addEventListener("click", startTimer);
-
 //popup
 
-const popup = document.querySelector(".popup");
-const ok_btn = document.querySelector(".ok_btn");
 
-function openPopup() {
+function openPopup(popup) {
     popup.classList.add("open-popup");
 };
 
-function closePopup() {
-  ok_btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    popup.classList.remove("open-popup");
-  });
-}
 
-closePopup();
 
+
+
+
+
+  

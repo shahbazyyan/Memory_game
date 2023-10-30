@@ -5,17 +5,17 @@
     <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Memory Game Hard</title>
 </head>
 <body>
     <div class="container">
         <h1>Hard</h1>
         <div class="controls">
         <h3>Click <span class="click">
-            220
+            200
         </span> </h3>
-        <h3>Time <span class="timer">
-            07:00
+        <h3>Time <span class="timer" id="timer">
+            06:00
         </span> </h3>
     </div>
         <div class="game gameMedium gameHard">
@@ -26,9 +26,14 @@
 
     <div class="popup">
         <h2>You win!</h2>
-        <button class="ok_btn">OK</button>
-    </div>
+        <button class="ok_btn"><a href="../html/medium.html">Try another level</a></button>
+    </div> 
 
-    <script src="../hard.js"></script>
+    <div class="popup_over">
+        <h2>Game Over!</h2>
+        <button class="ok_btn"><a href="../html/hard.html">Try again</a></button>
+    </div> 
+
+    <script src="../js/hard.js"></script>
 </body>
 </html>

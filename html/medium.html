@@ -5,16 +5,16 @@
     <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Memory Game Medium</title>
 </head>
 <body>
     <div class="container">
         <h1>Medium</h1>
         <div class="controls">
         <h3>Click <span class="click">
-            130
+            120
         </span> </h3>
-        <h3>Time <span class="timer">
+        <h3>Time <span class="timer" id="timer">
             04:00
         </span> </h3>
     </div>
@@ -26,9 +26,14 @@
 
     <div class="popup">
         <h2>You win!</h2>
-        <button class="ok_btn">OK</button>
-    </div>
+        <button class="ok_btn"><a href="../html/hard.html">Try another level</a></button>
+    </div> 
 
-    <script src="../mediums.js"></script>
+    <div class="popup_over">
+        <h2>Game Over!</h2>
+        <button class="ok_btn"><a href="/html/medium.html">Try again</a></button>
+    </div> 
+
+    <script src="../js/mediums.js"></script>
 </body>
 </html>
